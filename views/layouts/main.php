@@ -40,7 +40,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'Authors', 'url' => ['/author/index']],
-            ['label' => 'Books', 'url' => ['/author/index']],
+            ['label' => 'Books', 'url' => ['/book/index']],
         ],
     ]);
     NavBar::end();
