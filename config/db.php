@@ -1,14 +1,6 @@
 <?php
 
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2book-app',
-    'username' => 'root',
-    'password' => '',
-    'charset' => 'utf8',
+if (file_exists('db.env.php'))
+    return include 'db.env.php';
 
-    // Schema cache options (for production environment)
-    //'enableSchemaCache' => true,
-    //'schemaCacheDuration' => 60,
-    //'schemaCache' => 'cache',
-];
+return include "db.dist.php";
