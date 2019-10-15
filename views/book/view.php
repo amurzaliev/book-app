@@ -11,7 +11,6 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Books', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
-$authorUrl = Url::to(['author/view', 'id' => $model->author_id]);
 ?>
 <div class="book-view">
 
@@ -39,7 +38,7 @@ $authorUrl = Url::to(['author/view', 'id' => $model->author_id]);
             [
                 'label'  => 'Author',
                 'format' => 'raw',
-                'value'  => "<a href='$authorUrl'>View author</a>"
+                'value'  => Html::a('View author', Url::to(['author/view', 'id' => $model->author_id])),
             ]
         ],
     ]) ?>

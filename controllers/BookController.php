@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Author;
 use Yii;
 use app\models\Book;
 use yii\data\ActiveDataProvider;
@@ -42,6 +43,21 @@ class BookController extends Controller
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionViewByAuthor($authorId)
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Book::find()->where(['author_id' => $authorId]),
+            'sort'  => ['defaultOrder' => ['release_year' => SORT_DESC]],
+        ]);
+
+        $author = Author::findOne($authorId);
+
+        return $this->render('view_by_author', [
+            'dataProvider' => $dataProvider,
+            'author'       => $author,
         ]);
     }
 

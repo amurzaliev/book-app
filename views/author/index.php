@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -29,6 +30,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'rating',
 
             ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class'    => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete} {viewBooks}',
+                'buttons'  => [
+                    'viewBooks' => function ($url, $model, $key) {
+                        return Html::a(
+                                'View books',
+                                Url::to(['book/view-by-author', 'authorId' => $model->id]),
+                                ['class' => 'btn btn-sm btn-primary']
+                        );
+                    }
+                ]
+            ],
         ],
     ]); ?>
 
